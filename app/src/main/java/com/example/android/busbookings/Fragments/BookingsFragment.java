@@ -21,8 +21,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import io.realm.Realm;
-import io.realm.RealmResults;
+//import io.realm.Realm;
+//import io.realm.RealmResults;
 
 public class BookingsFragment extends Fragment {
 
@@ -46,8 +46,8 @@ public class BookingsFragment extends Fragment {
         bookingModels = new ArrayList<>();
         thisEmail = MainActivity.emailID;
 
-        RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
-        bookingModels.addAll(results);
+//        RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
+//        bookingModels.addAll(results);
         INIT();
 
         return view;

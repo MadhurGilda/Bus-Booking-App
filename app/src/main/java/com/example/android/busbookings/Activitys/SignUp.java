@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import io.realm.Realm;
+//import io.realm.Realm;
 
 public class SignUp extends AppCompatActivity {
 
