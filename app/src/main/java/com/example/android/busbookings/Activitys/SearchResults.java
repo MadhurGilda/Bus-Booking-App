@@ -2,6 +2,9 @@ package com.example.android.busbookings.Activitys;
 
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.example.android.busbookings.Adapters.BusAdapter;
 import com.example.android.busbookings.Objects.BusModel;
 import com.example.android.busbookings.R;
@@ -58,6 +61,8 @@ public class SearchResults extends AppCompatActivity {
                 for(DataSnapshot child : dataSnapshot.getChildren())
                 {
                     System.out.println(">>>>>>DATE FROM FB >>>>>"+child.child("date").getValue(String.class));
+                    Log.d("search",child.child("date").getValue(String.class)+"  "+searchDate);
+
                     if(child.child("date").getValue(String.class).equalsIgnoreCase(searchDate))
                     {
                         if(child.child("from").getValue(String.class).equalsIgnoreCase(searchFrom) &&
@@ -71,10 +76,15 @@ public class SearchResults extends AppCompatActivity {
                             busList.add(newBus);
                             System.out.println(">>>>>>LOADED FROM FB >>>>>"+newBus);
                         }
+                        else{
+                            Log.d("search","Null returned");
+                            Toast.makeText(getApplicationContext(),"Null returned",Toast.LENGTH_SHORT).show();
+                        }
                     }
-
-                    else
-                        continue;
+                    else{
+                        Log.d("search","Null main returned");
+                        Toast.makeText(getApplicationContext(),"Null main returned",Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 adapter = new BusAdapter(busList,SearchResults.this);

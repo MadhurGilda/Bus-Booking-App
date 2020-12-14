@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,6 +127,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View view) {
                 if(date_final.isEmpty() || from_final.isEmpty() || to_final.isEmpty())
                 {
+                    Log.d("search",date_final +" 0 "+from_final+" 1 "+to_final+" 2");
                     Toast.makeText(getContext(),"Field(s) empty!",Toast.LENGTH_SHORT).show();
                 }
                 else
