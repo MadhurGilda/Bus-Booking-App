@@ -1,52 +1,45 @@
 {
   "project_info": {
-    "project_number": "614795110151",
-    "firebase_url": "https://busbookings-96056.firebaseio.com",
-    "project_id": "busbookings-96056",
-    "storage_bucket": "busbookings-96056.appspot.com"
+    "project_number": "942649241655",
+    "firebase_url": "https://bus-booking-app-b1e8c-default-rtdb.firebaseio.com",
+    "project_id": "bus-booking-app-b1e8c",
+    "storage_bucket": "bus-booking-app-b1e8c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:614795110151:android:dab4a706801f6eb8",
+        "mobilesdk_app_id": "1:942649241655:android:cb4bb1c5e67b44507b8fb2",
         "android_client_info": {
           "package_name": "com.example.android.busbookings"
         }
       },
       "oauth_client": [
         {
-          "client_id": "614795110151-eng5frb51h0dtci8lepbg1tl8eqk55ui.apps.googleusercontent.com",
+          "client_id": "942649241655-19kurot0v8pigchjcpmtj6oh2labm6gm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.android.busbookings",
-            "certificate_hash": "f3617c88c5c6974f7def83821a5eaf12c7fbd78a"
+            "certificate_hash": "3b5cf91f710943ad48179e1ae67bf84ce455d672"
           }
         },
         {
-          "client_id": "614795110151-ecqpcadiu3aqlna2qfnb19j0dbh1u8pk.apps.googleusercontent.com",
+          "client_id": "942649241655-mu92k5tfdqe4mu3tvbs63q7qr3aojdbl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBUG159CR5dlRXvx4NxQdKTiSW22wRwHUw"
+          "current_key": "AIzaSyCA_yErsjrNTX23A48oTOtQx46DSKEAxqk"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "614795110151-ecqpcadiu3aqlna2qfnb19j0dbh1u8pk.apps.googleusercontent.com",
+              "client_id": "942649241655-mu92k5tfdqe4mu3tvbs63q7qr3aojdbl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
