@@ -2,9 +2,9 @@ package com.example.android.busbookings.Objects;
 
 import java.util.ArrayList;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+//import io.realm.RealmList;
+//import io.realm.RealmObject;
+//import io.realm.annotations.PrimaryKey;
 
 public class BusModel{
 

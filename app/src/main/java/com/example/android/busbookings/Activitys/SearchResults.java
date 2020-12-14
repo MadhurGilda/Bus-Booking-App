@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import io.realm.Realm;
-import io.realm.RealmResults;
+//import io.realm.Realm;
+//import io.realm.RealmResults;
 
 public class SearchResults extends AppCompatActivity {
 

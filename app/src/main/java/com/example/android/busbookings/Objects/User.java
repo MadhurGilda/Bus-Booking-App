@@ -1,11 +1,11 @@
 package com.example.android.busbookings.Objects;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+//import io.realm.RealmObject;
+//import io.realm.annotations.PrimaryKey;
 
-public class User extends RealmObject {
+public class User {
     String first_name,last_name,age,passwword;
-    @PrimaryKey
+//    @PrimaryKey
     String email;
 
     public User(String first_name, String last_name, String age,String passwword, String email) {

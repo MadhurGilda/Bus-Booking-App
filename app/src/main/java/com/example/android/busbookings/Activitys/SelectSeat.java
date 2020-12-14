@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import io.realm.Realm;
-import io.realm.RealmList;
+//import io.realm.Realm;
+//import io.realm.RealmList;
 
 public class SelectSeat extends AppCompatActivity {
 
@@ -191,7 +191,7 @@ public class SelectSeat extends AppCompatActivity {
                         seatString = seatString + " " + selectedSeats.get(i);
                     }
 
-                    final Realm realm = Realm.getDefaultInstance();
+                /*    final Realm realm = Realm.getDefaultInstance();
 
                     Intent launchConfirmBooking = new Intent(SelectSeat.this, ConfirmBooking.class);
                     realm.beginTransaction();
@@ -210,7 +210,7 @@ public class SelectSeat extends AppCompatActivity {
                     launchConfirmBooking.putExtra("freeSeats",20-filledSeats.size());
 
                     startActivity(launchConfirmBooking);
-                    finish();
+                    finish();*/
 
                 }
 
