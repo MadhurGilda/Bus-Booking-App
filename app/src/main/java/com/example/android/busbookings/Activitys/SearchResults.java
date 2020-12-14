@@ -1,10 +1,7 @@
 package com.example.android.busbookings.Activitys;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
+import android.os.Bundle;
 import com.example.android.busbookings.Adapters.BusAdapter;
 import com.example.android.busbookings.Objects.BusModel;
 import com.example.android.busbookings.R;
@@ -16,6 +13,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.realm.Realm;
 import io.realm.RealmResults;
 

@@ -1,37 +1,31 @@
 package com.example.android.busbookings.Activitys;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.android.busbookings.Adapters.MyAdapter;
 import com.example.android.busbookings.R;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity{
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.Fragment;
+
+public class MainActivity extends AppCompatActivity {
 
     public static String emailID = "";
 
     TabLayout tabLayout;
     ViewPager viewPager;
 
-    TextView Name,email;
+    TextView Name, email;
     ImageView imgProfile;
 
     DrawerLayout drawerLayout;

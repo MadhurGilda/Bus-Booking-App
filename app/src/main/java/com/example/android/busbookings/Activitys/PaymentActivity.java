@@ -2,7 +2,6 @@ package com.example.android.busbookings.Activitys;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,11 +12,13 @@ import com.razorpay.PaymentResultListener;
 
 import org.json.JSONObject;
 
-public class PaymentActivity extends AppCompatActivity implements PaymentResultListener{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PaymentActivity extends AppCompatActivity implements PaymentResultListener {
 
     static String TAG = PaymentActivity.class.getSimpleName();
 
-    String email,desc,key;
+    String email, desc, key;
     int amt;
 
 
@@ -28,7 +29,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
         email = getIntent().getStringExtra("Email");
         key = getIntent().getStringExtra("BookingKey");
-        amt = getIntent().getIntExtra("Amount",0) * 100;
+        amt = getIntent().getIntExtra("Amount", 0) * 100;
 
         startPayment();
     }
@@ -72,18 +73,16 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             options.put("amount", amt);
 
             checkout.open(activity, options);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             Log.e(TAG, "Error in starting Razorpay Checkout", e);
         }
     }
 
     @Override
     public void onPaymentSuccess(String s) {
-        Intent launchMain = new Intent(PaymentActivity.this,MainActivity.class);
-        launchMain.putExtra("Email",email);
-        launchMain.putExtra("BookingKey",key);
+        Intent launchMain = new Intent(PaymentActivity.this, MainActivity.class);
+        launchMain.putExtra("Email", email);
+        launchMain.putExtra("BookingKey", key);
         startActivity(launchMain);
         finish();
 
@@ -91,10 +90,10 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
     @Override
     public void onPaymentError(int i, String s) {
-        Toast.makeText(this,"Payment failed!",Toast.LENGTH_SHORT).show();
-        Intent launchMain = new Intent(PaymentActivity.this,MainActivity.class);
-        launchMain.putExtra("Email",email);
-        launchMain.putExtra("BookingKey",key);
+        Toast.makeText(this, "Payment failed!", Toast.LENGTH_SHORT).show();
+        Intent launchMain = new Intent(PaymentActivity.this, MainActivity.class);
+        launchMain.putExtra("Email", email);
+        launchMain.putExtra("BookingKey", key);
         startActivity(launchMain);
         finish();
     }
