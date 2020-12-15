@@ -65,9 +65,9 @@ public class BookingsListAdapter extends RecyclerView.Adapter<BookingsListAdapte
 
         void populateBooking(final BookingModel bookingModel)
         {
-            from.setText(bookingModel.getFromDest());
-            to.setText(bookingModel.getToDest());
-            date.setText(bookingModel.getDateTravel());
+            from.setText(bookingModel.getFrom());
+            to.setText(bookingModel.getTo());
+            date.setText(bookingModel.getDate());
             time.setText(bookingModel.getTime());
             seat.setText(bookingModel.getSeat());
 
@@ -75,8 +75,8 @@ public class BookingsListAdapter extends RecyclerView.Adapter<BookingsListAdapte
                 @Override
                 public void onClick(View view) {
                     Intent openMapPreview = new Intent(context, MapsActivity.class);
-                    openMapPreview.putExtra("from",bookingModel.getFromDest());
-                    openMapPreview.putExtra("to",bookingModel.getToDest());
+                    openMapPreview.putExtra("from",bookingModel.getFrom());
+                    openMapPreview.putExtra("to",bookingModel.getTo());
                     context.startActivity(openMapPreview);
                 }
             });

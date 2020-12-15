@@ -42,11 +42,10 @@ public class SearchFragment extends Fragment {
 
     //TODO: Add better city search.
 
-    String locationsFrom[] = {"Chennai","Bangalore","Coimbatore","Madurai","Trichy","Mumbai"};
-    String locationsTo[] = {"Pondicherry","Mysore","Tirunalveli","Kanyakumari","Kancheepuram","Goa"};
+    String locationsFrom[] = {"Chennai","Bangalore","Pune","Jalna","Aurangabad","Latur","Mumbai","Goa"};
+    String locationsTo[] = {"Nashik","Jaipur","Delhi","Thane","Hyderabad","Goa","Mumbai","Pune"};
 
-    String locations[] = {"Chennai","Bangalore","Coimbatore","Madurai","Trichy","Pondicherry","Mysore",
-            "Tirunalveli","Kanyakumari","Kancheepuram"};
+    String locations[] = {"Chennai","Bangalore","Pune","Jalna","Aurangabad","Latur","Mumbai","Nashik","Jaipur","Delhi","Thane","Hyderabad","Goa"};
     ArrayList<String> usedLocations = new ArrayList<>();
 
 
@@ -63,7 +62,7 @@ public class SearchFragment extends Fragment {
         ArrayList<String> listfrom = new ArrayList<String>();
         ArrayList<String> listto    = new ArrayList<String>();
 
-        for(int i =0;i<6;i++)
+        for(int i =0;i<8;i++)
         {
             listfrom.add(locationsFrom[i]);
             listto.add(locationsTo[i]);

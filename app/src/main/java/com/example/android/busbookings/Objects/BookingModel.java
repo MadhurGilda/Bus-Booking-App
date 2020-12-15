@@ -32,23 +32,23 @@ public class BookingModel {
         BookingID = email+from+to+totalCost+seat;
     }
 
-    public String getBookingEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setBookingEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getBookingID() {
+    public String getID() {
         return BookingID;
     }
 
-    public void setBookingID(String bookingID) {
+    public void setID(String bookingID) {
         BookingID = bookingID;
     }
 
-    public String getFromDest() {
+    public String getFrom() {
         return from;
     }
 
@@ -60,23 +60,23 @@ public class BookingModel {
         this.totalCost = totalCost;
     }
 
-    public void setFromDest(String from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public String getToDest() {
+    public String getTo() {
         return to;
     }
 
-    public void setToDest(String to) {
+    public void setTo(String to) {
         this.to = to;
     }
 
-    public String getDateTravel() {
+    public String getDate() {
         return date;
     }
 
-    public void setDateTravel(String date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

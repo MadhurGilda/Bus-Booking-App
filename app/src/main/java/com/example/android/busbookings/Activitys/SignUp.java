@@ -2,6 +2,7 @@ package com.example.android.busbookings.Activitys;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -82,6 +83,12 @@ public class SignUp extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
+                                    SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                    editor.putString("email",email);
+                                    editor.apply();
+
                                     Intent openSearch = new Intent(SignUp.this,MainActivity.class);
                                     openSearch.putExtra("Email",email);
                                     Toast.makeText(getApplicationContext(),"Signup successful",Toast.LENGTH_SHORT).show();
