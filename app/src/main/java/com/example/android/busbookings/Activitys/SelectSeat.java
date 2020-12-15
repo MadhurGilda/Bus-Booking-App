@@ -42,7 +42,7 @@ public class SelectSeat extends AppCompatActivity {
     int busID;
     String emailid;
     String key;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,bookingref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class SelectSeat extends AppCompatActivity {
 
         busID = getIntent().getIntExtra("busID", 100);
         emailid = getIntent().getStringExtra("Email");
-
+        bookingref=FirebaseDatabase.getInstance().getReference().child("bookings");
 
         loadBusData();
 
@@ -190,14 +190,23 @@ public class SelectSeat extends AppCompatActivity {
                     for (int i = 0; i < selectedSeats.size(); i++) {
                         seatString = seatString + " " + selectedSeats.get(i);
                     }
+                    BookingModel newBooking = new BookingModel(emailid,thisBus.getFrom(), thisBus.getTo(), thisBus.getDate(),
+                            seatString, thisBus.getTime(), Integer.parseInt(cost.getText().toString()));
+
+                    bookingref.push().setValue(newBooking);
+
+
+                    Toast.makeText(getApplicationContext(),"Thank you for booking !",Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(SelectSeat.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
 
                 /*    final Realm realm = Realm.getDefaultInstance();
 
                     Intent launchConfirmBooking = new Intent(SelectSeat.this, ConfirmBooking.class);
                     realm.beginTransaction();
 
-                    BookingModel newBooking = new BookingModel(emailid,thisBus.getFrom(), thisBus.getTo(), thisBus.getDate(),
-                            seatString, thisBus.getTime(), Integer.parseInt(cost.getText().toString()));
 
                     realm.insertOrUpdate(newBooking);
                     realm.commitTransaction();

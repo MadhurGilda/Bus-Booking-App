@@ -78,12 +78,10 @@ public class SearchResults extends AppCompatActivity {
                         }
                         else{
                             Log.d("search","Null returned");
-                            Toast.makeText(getApplicationContext(),"Null returned",Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
                         Log.d("search","Null main returned");
-                        Toast.makeText(getApplicationContext(),"Null main returned",Toast.LENGTH_SHORT).show();
                     }
                 }
 

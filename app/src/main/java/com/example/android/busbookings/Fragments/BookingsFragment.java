@@ -1,7 +1,10 @@
 package com.example.android.busbookings.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 //import io.realm.RealmResults;
 
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +40,8 @@ public class BookingsFragment extends Fragment {
     RecyclerView bookingsList;
     ArrayList<BookingModel> bookingModels;
     BookingsListAdapter adapter;
-
+SharedPreferences sharedPreferences;
+SharedPreferences.Editor editor;
     FirebaseAuth mAuth;
     String thisEmail;
 
@@ -49,22 +54,27 @@ public class BookingsFragment extends Fragment {
         bookingsList = view.findViewById(R.id.BookingsRV);
         signout = view.findViewById(R.id.signout);
         mAuth = FirebaseAuth.getInstance();
+        sharedPreferences = getActivity().getSharedPreferences("logindetails",Context.MODE_PRIVATE);
 
-        bookingModels = new ArrayList<BookingModel>();
-        thisEmail = MainActivity.emailID;
+        thisEmail = sharedPreferences.getString("email","null");
+        Log.d("emaild in bookings",thisEmail);
+        bookingModels = new ArrayList<>();
+        bookingsList.setHasFixedSize(true);
+
+        adapter = new BookingsListAdapter(bookingModels,getContext());
+        bookingsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        bookingsList.setAdapter(adapter);
+
         loadBookingData();
 
 //      RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
 //      bookingModels.addAll(results);
-        INIT();
+//        INIT();
         return view;
     }
 
     public void INIT()
     {
-        adapter = new BookingsListAdapter(bookingModels,getContext());
-        bookingsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        bookingsList.setAdapter(adapter);
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,19 +96,29 @@ public class BookingsFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int i=0;
                 for(DataSnapshot child : dataSnapshot.getChildren())
                 {
                     System.out.println(">>>>ENTIRE CHILD OBJECT>>>>>"+child);
                     System.out.println(">>>>>STRING 1>>>>>>"+child.child("email").getValue(String.class));
                     System.out.println(">>>>>EMAIL IN BOOKINGFRAG STRING 2>>>>>>>>>>>>>"+MainActivity.emailID);
 
-                    if(child.child("email").getValue(String.class).equals(MainActivity.emailID))
+
+
+                    if(child.child("email").getValue(String.class).equals(thisEmail))
                     {
                         BookingModel myBooking = new BookingModel(thisEmail,child.child("from").getValue(String.class),child.child("to").getValue(String.class),
                                 child.child("date").getValue(String.class),child.child("seat").getValue(String.class),child.child("time").getValue(String.class),
                                 child.child("totalCost").getValue(Integer.class));
                         bookingModels.add(myBooking);
+                        adapter.notifyDataSetChanged();
+
                     }
+                    i++;
+                }
+                if(i==dataSnapshot.getChildrenCount()) {
+                    INIT();
+                    adapter.notifyDataSetChanged();
                 }
             }
 
@@ -107,5 +127,6 @@ public class BookingsFragment extends Fragment {
                 System.out.println("ERROR>>>>>>"+databaseError.getMessage());
             }
         });
+
     }
 }
