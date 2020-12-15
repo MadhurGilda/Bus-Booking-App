@@ -24,8 +24,15 @@ import androidx.recyclerview.widget.RecyclerView;
 //import io.realm.Realm;
 //import io.realm.RealmResults;
 
-public class BookingsFragment extends Fragment {
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class BookingsFragment extends Fragment {
+    DatabaseReference databaseReference;
     RecyclerView bookingsList;
     ArrayList<BookingModel> bookingModels;
     BookingsListAdapter adapter;
@@ -43,18 +50,21 @@ public class BookingsFragment extends Fragment {
         signout = view.findViewById(R.id.signout);
         mAuth = FirebaseAuth.getInstance();
 
-        bookingModels = new ArrayList<>();
+        bookingModels = new ArrayList<BookingModel>();
         thisEmail = MainActivity.emailID;
+        loadBookingData();
 
-//        RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
-//        bookingModels.addAll(results);
+//      RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
+//      bookingModels.addAll(results);
         INIT();
-
         return view;
     }
 
     public void INIT()
     {
+        adapter = new BookingsListAdapter(bookingModels,getContext());
+        bookingsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        bookingsList.setAdapter(adapter);
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,42 +75,37 @@ public class BookingsFragment extends Fragment {
             }
         });
 
-        adapter = new BookingsListAdapter(bookingModels,getContext());
-        bookingsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        bookingsList.setAdapter(adapter);
+
     }
 
-    //    public void loadBookingData()
-//    {
-//        databaseReference = FirebaseDatabase.getInstance().getReference().child("bookings");
-//        databaseReference.keepSynced(true);
-//
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot child : dataSnapshot.getChildren())
-//                {
-//                    System.out.println(">>>>ENTIRE CHILD OBJECT>>>>>"+child);
-//                    System.out.println(">>>>>STRING 1>>>>>>"+child.child("email").getValue(String.class));
-//                    System.out.println(">>>>>EMAIL IN BOOKINGFRAG STRING 2>>>>>>>>>>>>>"+MainActivity.emailID);
-//
-//                    if(child.child("email").getValue(String.class).equals(MainActivity.emailID))
-//                    {
-//                        BookingModel myBooking = new BookingModel(thisEmail,child.child("from").getValue(String.class),child.child("to").getValue(String.class),
-//                                child.child("date").getValue(String.class),child.child("seat").getValue(String.class),child.child("time").getValue(String.class),
-//                                child.child("totalCost").getValue(Integer.class));
-//                        bookingModels.add(myBooking);
-//
-//                    }
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                System.out.println("ERROR>>>>>>"+databaseError.getMessage());
-//            }
-//        });
-//    }
+    public void loadBookingData()
+    {
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("bookings");
+        databaseReference.keepSynced(true);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot child : dataSnapshot.getChildren())
+                {
+                    System.out.println(">>>>ENTIRE CHILD OBJECT>>>>>"+child);
+                    System.out.println(">>>>>STRING 1>>>>>>"+child.child("email").getValue(String.class));
+                    System.out.println(">>>>>EMAIL IN BOOKINGFRAG STRING 2>>>>>>>>>>>>>"+MainActivity.emailID);
+
+                    if(child.child("email").getValue(String.class).equals(MainActivity.emailID))
+                    {
+                        BookingModel myBooking = new BookingModel(thisEmail,child.child("from").getValue(String.class),child.child("to").getValue(String.class),
+                                child.child("date").getValue(String.class),child.child("seat").getValue(String.class),child.child("time").getValue(String.class),
+                                child.child("totalCost").getValue(Integer.class));
+                        bookingModels.add(myBooking);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("ERROR>>>>>>"+databaseError.getMessage());
+            }
+        });
+    }
 }
