@@ -149,11 +149,11 @@ public class SignIn extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+                            SharedPreferences sharedPreferences = getSharedPreferences("logindetails",MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-
+                            Log.d("emaild",user.getEmail());
                             editor.putString("email",user.getEmail());
-                            editor.apply();
+                            editor.commit();
 
                             Intent launchSearch = new Intent(SignIn.this,MainActivity.class);
                             launchSearch.putExtra("Email",user.getEmail());

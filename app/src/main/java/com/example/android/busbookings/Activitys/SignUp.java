@@ -83,11 +83,11 @@ public class SignUp extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
-                                    SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+                                    SharedPreferences sharedPreferences = getSharedPreferences("logindetails",MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
-
+                                    Log.d("emaild",email);
                                     editor.putString("email",email);
-                                    editor.apply();
+                                    editor.commit();
 
                                     Intent openSearch = new Intent(SignUp.this,MainActivity.class);
                                     openSearch.putExtra("Email",email);
