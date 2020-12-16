@@ -14,12 +14,14 @@
         android:orientation="vertical"
         android:padding="6dp">
 
-        <Button
+        <ImageButton
             android:id="@+id/delete_Booking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
-            android:text="X" />
+            android:layout_gravity="end"
+            android:src="@drawable/ic_baseline_delete_outline_24"
+             />
 
         <LinearLayout
             android:id="@+id/LL1"

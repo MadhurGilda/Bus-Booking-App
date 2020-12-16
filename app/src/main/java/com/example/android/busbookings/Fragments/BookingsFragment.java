@@ -69,7 +69,7 @@ SharedPreferences.Editor editor;
             @Override
             public void update() {
                 Toast.makeText(getContext(),"Booking Deleted 2",Toast.LENGTH_SHORT).show();
-
+                bookingModels.clear();
                 loadBookingData();
             }
         });
