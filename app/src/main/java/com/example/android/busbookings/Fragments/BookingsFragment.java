@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.android.busbookings.Activitys.MainActivity;
 import com.example.android.busbookings.Activitys.SignIn;
@@ -24,11 +25,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-//import io.realm.Realm;
-//import io.realm.RealmResults;
 
 
-import com.google.firebase.database.ChildEventListener;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,6 +65,14 @@ SharedPreferences.Editor editor;
         bookingsList.setAdapter(adapter);
 
         loadBookingData();
+        adapter.setUpdatingList(new BookingsListAdapter.UpdatingList() {
+            @Override
+            public void update() {
+                Toast.makeText(getContext(),"Booking Deleted 2",Toast.LENGTH_SHORT).show();
+
+                loadBookingData();
+            }
+        });
 
 //      RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
 //      bookingModels.addAll(results);
