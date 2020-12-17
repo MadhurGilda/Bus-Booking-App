@@ -42,8 +42,8 @@ public class SearchFragment extends Fragment {
 
     //TODO: Add better city search.
 
-    String locationsFrom[] = {"Chennai","Bangalore","Pune","Jalna","Aurangabad","Latur","Mumbai","Goa"};
-    String locationsTo[] = {"Nashik","Jaipur","Delhi","Thane","Hyderabad","Goa","Mumbai","Pune"};
+    String locationsFrom[] = {"Chennai","Bangalore","Pune","Jalna","Aurangabad","Latur","Mumbai","Nashik","Jaipur","Delhi","Thane","Hyderabad","Goa"};
+    String locationsTo[] = {"Chennai","Bangalore","Pune","Jalna","Aurangabad","Latur","Mumbai","Nashik","Jaipur","Delhi","Thane","Hyderabad","Goa"};
 
     String locations[] = {"Chennai","Bangalore","Pune","Jalna","Aurangabad","Latur","Mumbai","Nashik","Jaipur","Delhi","Thane","Hyderabad","Goa"};
     ArrayList<String> usedLocations = new ArrayList<>();
@@ -128,6 +128,9 @@ public class SearchFragment extends Fragment {
                 {
                     Log.d("search",date_final +" 0 "+from_final+" 1 "+to_final+" 2");
                     Toast.makeText(getContext(),"Field(s) empty!",Toast.LENGTH_SHORT).show();
+                }
+                else if(from_final == to_final){
+                    Toast.makeText(getContext(),"Locations Cannot be Same !!",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {

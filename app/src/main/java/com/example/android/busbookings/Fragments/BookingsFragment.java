@@ -74,9 +74,7 @@ SharedPreferences.Editor editor;
             }
         });
 
-//      RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
-//      bookingModels.addAll(results);
-//        INIT();
+
         return view;
     }
 

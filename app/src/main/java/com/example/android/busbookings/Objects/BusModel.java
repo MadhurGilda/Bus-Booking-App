@@ -81,11 +81,6 @@ public class BusModel{
         this.filledSeats = filledSeats;
     }
 
-    //    public void fillSeat(int seatNo)
-//    {
-//        this.filledSeats.add(seatNo);
-//    }
-
     public int getCost() {
         return cost;
     }

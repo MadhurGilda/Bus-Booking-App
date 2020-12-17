@@ -116,9 +116,7 @@ public class BookingsListAdapter extends RecyclerView.Adapter<BookingsListAdapte
                                     child.getRef().removeValue();
                                     updatingList.update();
                                 }
-
                             }
-
                         }
 
                         @Override

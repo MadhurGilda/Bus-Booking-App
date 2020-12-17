@@ -16,7 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
-import androidx.fragment.app.Fragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -92,7 +92,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-/*
-*
-*
-* */
