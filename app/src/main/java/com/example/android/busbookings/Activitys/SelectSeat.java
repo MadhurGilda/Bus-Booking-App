@@ -24,8 +24,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import androidx.appcompat.app.AppCompatActivity;
-//import io.realm.Realm;
-//import io.realm.RealmList;
+
 
 public class SelectSeat extends AppCompatActivity {
 
@@ -202,24 +201,7 @@ public class SelectSeat extends AppCompatActivity {
                     startActivity(intent);
                     finish();
 
-                /*    final Realm realm = Realm.getDefaultInstance();
 
-                    Intent launchConfirmBooking = new Intent(SelectSeat.this, ConfirmBooking.class);
-                    realm.beginTransaction();
-
-
-                    realm.insertOrUpdate(newBooking);
-                    realm.commitTransaction();
-                    realm.close();
-
-                    launchConfirmBooking.putExtra("BookingID", newBooking.getBookingID());
-                    launchConfirmBooking.putExtra("busID",busID);
-                    launchConfirmBooking.putExtra("BusKey",key);
-                    launchConfirmBooking.putExtra("filledSeats",newSeatsString);
-                    launchConfirmBooking.putExtra("freeSeats",20-filledSeats.size());
-
-                    startActivity(launchConfirmBooking);
-                    finish();*/
 
                 }
 
@@ -233,8 +215,7 @@ public class SelectSeat extends AppCompatActivity {
     boolean contains(List<String> seatModels, int seat) {
 
         for (String seatModel : seatModels) {
-            //System.out.println(">>>>>>>>   " + seatModel);
-            //System.out.println("seat>>>>>>>>   " + seat);
+
             if (seatModel.equalsIgnoreCase(String.valueOf(seat))) {
                 return true;
             }

@@ -1,7 +1,6 @@
 package com.example.android.busbookings.Activitys;
 
 import android.content.Intent;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,18 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.busbookings.Objects.User;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.android.busbookings.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-//import io.realm.Realm;
 
 public class SignUp extends AppCompatActivity {
 
@@ -99,7 +95,7 @@ public class SignUp extends AppCompatActivity {
                                 else
                                 {
                                     Log.w("createUserfailure", task.getException());
-                                    Toast.makeText(SignUp.this, "Password too short (Atleast 6)",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUp.this, "Signup Unsuccessful, No such EmailId",Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

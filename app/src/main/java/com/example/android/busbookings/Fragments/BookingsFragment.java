@@ -74,9 +74,7 @@ SharedPreferences.Editor editor;
             }
         });
 
-//      RealmResults<BookingModel> results = Realm.getDefaultInstance().where(BookingModel.class).equalTo("email", thisEmail).findAll();
-//      bookingModels.addAll(results);
-//        INIT();
+
         return view;
     }
 
@@ -119,7 +117,6 @@ SharedPreferences.Editor editor;
                                 child.child("totalCost").getValue(Integer.class));
                         bookingModels.add(myBooking);
                         adapter.notifyDataSetChanged();
-
                     }
                     i++;
                 }

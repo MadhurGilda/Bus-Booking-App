@@ -3,7 +3,7 @@ package com.example.android.busbookings.Activitys;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+
 
 import com.example.android.busbookings.Adapters.BusAdapter;
 import com.example.android.busbookings.Objects.BusModel;
@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-//import io.realm.Realm;
-//import io.realm.RealmResults;
+
 
 public class SearchResults extends AppCompatActivity {
 
