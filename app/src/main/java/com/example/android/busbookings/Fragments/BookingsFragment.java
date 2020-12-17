@@ -119,7 +119,6 @@ SharedPreferences.Editor editor;
                                 child.child("totalCost").getValue(Integer.class));
                         bookingModels.add(myBooking);
                         adapter.notifyDataSetChanged();
-
                     }
                     i++;
                 }

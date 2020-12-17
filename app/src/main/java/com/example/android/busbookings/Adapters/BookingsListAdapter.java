@@ -1,9 +1,10 @@
 package com.example.android.busbookings.Adapters;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 
-import android.util.Log;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
-import com.example.android.busbookings.Activitys.MapsActivity;
 import com.example.android.busbookings.Objects.BookingModel;
 import com.example.android.busbookings.R;
 import com.google.firebase.database.DataSnapshot;
@@ -20,11 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -135,12 +131,26 @@ public class BookingsListAdapter extends RecyclerView.Adapter<BookingsListAdapte
             preview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent openMapPreview = new Intent(context, MapsActivity.class);
-                    openMapPreview.putExtra("from",bookingModel.getFrom());
-                    openMapPreview.putExtra("to",bookingModel.getTo());
-                    context.startActivity(openMapPreview);
+                    displayTrack(bookingModel.getFrom(),bookingModel.getTo());
                 }
             });
+        }
+        private void displayTrack(String fromDest, String toDest) {
+            try {
+                Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + fromDest + "/" + toDest);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
+            }catch(ActivityNotFoundException e){
+                Uri uri =Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
         }
     }
 }
